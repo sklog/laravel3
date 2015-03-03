@@ -8,7 +8,17 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-					You are logged in!
+					@if($tovars)
+					@foreach($tovars as $one)
+					<h2>{{$one->name}}</h2>
+					<div>{{$one->body}}</div>
+					<div>{{$one->price}}</div>
+					<hr/>
+					@endforeach
+					{!!$tovars->render()!!} <!-- постраничная навигация -->
+					{!!$tovars->total()!!} <!-- кол-во записей -->
+					
+					@endif
 				</div>
 			</div>
 		</div>

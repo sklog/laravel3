@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
-
-class WelcomeController extends Controller {
+	  use DB;
+class BaseController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		parent::__construct();
 	}
 
 	/**
@@ -28,9 +28,28 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
-		return view('welcome');
+		$tovars = DB::table('products')
+					->where('vip','=',1)
+					->paginate(2);
+					
+		return view('home')->with('tovars',$tovars);
 	}
-
+	
+	public function AddProducts()
+	{
+		DB::table('products')
+			->insert(array(  'name'=>'пылесос4',
+							 'body'=>'model b45-15',
+							 'price'=>'$48',
+							 'showhide'=>'show',
+							 'vip'=>'1',
+							 'cat_id'=>'26',
+							 'created_at'=>date('y-m-d h:i:s'),
+							 'updated_at'=>date('y-m-d h:i:s')
+			));
+					 return redirect('/');
+			
+	}
 }
