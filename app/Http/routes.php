@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('addproducts','BaseController@AddProducts');
 
 Route::get('home', 'HomeController@index');
@@ -19,5 +18,6 @@ Route::get('home', 'HomeController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
+	'adminka' => 'Adminka\MainController',
 	'/{id?}' => 'BaseController'
 ]);

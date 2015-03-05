@@ -34,7 +34,7 @@ class BaseController extends Controller {
 					->where('vip','=',1)
 					->paginate(2);
 					
-		return view('home')->with('tovars',$tovars);
+		return view('home');
 	}
 	
 	public function AddProducts()
